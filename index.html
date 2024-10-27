@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array</title>
+  </head>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+    .student-card {
+      border: 2px solid black;
+      padding: 10px 5px;
+      margin: 10px;
+      border-radius: 20px;
+    }
+    .parentcont{
+        background-color: tomato;
+        padding: 10px;
+        position:fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #input{
+      border-radius: 20px;
+      padding: 5px 10px;
+    }
+    .btn{
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-left:10px ;
+      margin-right: 10px;
+      border-radius: 20px;
+      min-width: 60px;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <h1>Students Book 📙</h1>
+
+    <div class="parentcont">
+    <input type="text" placeholder="Enter Name" id="input" />
+
+    <button type="button" onclick="addfunc()" class="btn">Add Students</button>
+    <button type="button" onclick="removefunc()" class="btn">Remove Students</button>
+    </div>
+
+    <div id="list"></div>
+
+    <script>
+        function ranmdomemoji(){
+            const emoji = ["😊", "😂", "😍", "🥳", "😎", "🤔", "🙈", "🎉", "🔥", "💡"];
+            const min = 0 ;
+            const max = emoji.length-1;
+
+            const randomindex = Math.floor(Math.random() * (max - min+1)) + min; 
+
+            return emoji[randomindex];
+
+        }
+
+
+      const students = ["Parikshit", "Arpit", "Sayali", "Rohit", "Pragati"];
+
+      console.log(students);//Shows O/P in console
+
+      console.log(`Length of the Array is : ${students.length}`);//Shows O/P in console
+
+      
+      
+      function loadfunc() {
+        const getelement = document.getElementById("list");
+        getelement.innerHTML=" "
+
+        for (let i = 0; i < students.length; i++) {
+          getelement.innerHTML += `<div class="student-card"> ${ranmdomemoji()} ${i + 1})  ${students[i]} <div>`;
+
+          // getelement.innerText += `<div> ${i+1})  ${students[i]} <div>`;
+
+          console.log(`Hello : ${students[i]}`);//Shows O/P in console
+        }
+      }
+      loadfunc()
+
+      
+       const getinputelement = document.getElementById("input");
+
+
+       function addfunc(){
+       
+        students.push(getinputelement.value);
+
+        getinputelement.value="";
+        loadfunc()
+        
+       }
+
+
+       function removefunc(){
+          const index= students.indexOf(getinputelement.value);
+          getinputelement.value="";
+          student.splice(index,1);
+          loadfunc();
+
+
+
+       }
+
+    </script>
+  </body>
+</html>
